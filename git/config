@@ -1,3 +1,5 @@
 [user]
-	email = 3816549+Czaplicki@users.noreply.github.com
 	name = Czaplicki
+	email = 3816549+Czaplicki@users.noreply.github.com
+[credential]
+	helper = store
