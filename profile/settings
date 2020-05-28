@@ -1,0 +1,6 @@
+
+
+
+
+# load tty keymap if in tty
+tty | grep -q tty && doas loadkeys ~/.config/keyboard/tty.kmap

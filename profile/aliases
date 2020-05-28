@@ -1,0 +1,22 @@
+
+# general
+alias q="exit"
+
+# grm
+alias repo='cd $(grm pick)'
+
+# doas
+alias doas="doas --"
+
+# ls (exa)
+alias ls="exa"
+alias ll="exa -l"
+alias la="exa -la"
+
+# pacman (yay)
+#alias pacman="yay"
+
+
+# xdg-intergration
+[ -f "$XDG_INTEGRATION_DIR/aliases" ] && . "$XDG_INTEGRATION_DIR/aliases" 
+

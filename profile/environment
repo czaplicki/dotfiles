@@ -1,0 +1,22 @@
+
+
+# Path
+export PATH="$PATH:$HOME/scripts"
+
+# Prefrences
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=st
+export BROWSER=firefox
+
+# XDG ( +xdg-Intergration )
+export XDG_INTEGRATION_DIR="/src/github.com/Czaplicki/xgd-integration"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config/"
+export XDG_CACHE_HOME="$HOME/.cache/"
+[ -f "$XDG_INTEGRATION_DIR/environment" ] && . "$XDG_INTEGRATION_DIR/environment"
+
+# Golang
+export GOPATH="$XDG_DATA_DIR/go"
+
+
