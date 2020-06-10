@@ -23,6 +23,7 @@ let mapleader="\<SPACE>"
 nmap <Leader>sr :%s//g<Left><Left>
 nnoremap ; :
 
+autocmd BufNewFile,BufRead *.hwk set syntax=lua
 
 "let g:airline_statusline_ontop=1
 "let g:airline_theme='jellybeans'
