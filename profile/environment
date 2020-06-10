@@ -10,13 +10,15 @@ export TERMINAL=st
 export BROWSER=firefox
 
 # XDG ( +xdg-Intergration )
-export XDG_INTEGRATION_DIR="/src/github.com/Czaplicki/xgd-integration"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config/"
 export XDG_CACHE_HOME="$HOME/.cache/"
-[ -f "$XDG_INTEGRATION_DIR/environment" ] && . "$XDG_INTEGRATION_DIR/environment"
+export XDG_INTEGRATION_HOME="/src/github.com/czaplicki/xdg-integration"
+	. "$XDG_INTEGRATION_HOME/environment"
 
 # Golang
-export GOPATH="$XDG_DATA_DIR/go"
+export GOPATH="$XDG_DATA_HOME/go"
 
 
+# load tty keymap if in tty
+tty | grep -q tty && doas loadkeys ~/.config/keyboard/tty.kmap

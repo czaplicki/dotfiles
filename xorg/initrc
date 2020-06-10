@@ -1,0 +1,5 @@
+#! /bin/sh
+
+sxhkd &
+xwallpaper "$HOME/.config/xwallpaper/>"
+exec bspwm

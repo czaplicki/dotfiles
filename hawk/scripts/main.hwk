@@ -1,0 +1,4 @@
+
+
+key 'Escape'	=> replace 'Caps'
+key 'Caps'		=> replace 'Escape'

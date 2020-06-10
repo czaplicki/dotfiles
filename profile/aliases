@@ -1,7 +1,7 @@
 
 # general
 alias q="exit"
-
+alias todo="nvim $HOME/todo"
 # grm
 alias repo='cd $(grm pick)'
 
@@ -12,6 +12,10 @@ alias doas="doas --"
 alias ls="exa"
 alias ll="exa -l"
 alias la="exa -la"
+
+
+#alias bemenu="LD_LIBRARY_PATH=/usr/local/lib bemenu"
+#alias bemenu="LD_LIBRARY_PATH=/usr/local/lib bemenu-run"
 
 # pacman (yay)
 #alias pacman="yay"

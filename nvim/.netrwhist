@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/home/czaplicki/.config/zsh'
+let g:netrw_dirhist_1='/src/github.com/Cloudef/bemenu/lib'
+let g:netrw_dirhist_0='/src/github.com/Cloudef/bemenu/client/common'
+let g:netrw_dirhist_9='/src/github.com/Cloudef/bemenu/client'
+let g:netrw_dirhist_8='/src/github.com/Cloudef/bemenu'
+let g:netrw_dirhist_7='/src/github.com/Cloudef/bemenu/client/common'
+let g:netrw_dirhist_6='/src/github.com/Cloudef/bemenu/client'
+let g:netrw_dirhist_5='/src/github.com/Cloudef/bemenu'
+let g:netrw_dirhist_4='/src/github.com/Cloudef/bemenu/client'
+let g:netrw_dirhist_3='/src/github.com/Cloudef/bemenu'
+let g:netrw_dirhist_2='/home/czaplicki/files/notes'

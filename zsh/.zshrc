@@ -1,6 +1,7 @@
 if [[ -a "$HOME/.config/profile/environment"	]]; then; source "$HOME/.config/profile/environment";	fi
-if [[ -a "$HOME/.config/profile/aliases"	]]; then; source "$HOME/.config/profile/aliases";	fi
-if [[ -a "$HOME/.config/profile/settings"	]]; then; source "$HOME/.config/profile/settings";	fi
+if [[ -a "$HOME/.config/profile/functions"		]]; then; source "$HOME/.config/profile/functions";		fi
+if [[ -a "$HOME/.config/profile/aliases"		]]; then; source "$HOME/.config/profile/aliases";		fi
+if [[ -a "$HOME/.config/profile/settings"		]]; then; source "$HOME/.config/profile/settings";		fi
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes

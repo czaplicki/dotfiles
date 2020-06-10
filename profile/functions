@@ -1,0 +1,19 @@
+#! /bin/sh
+
+
+
+newscript() {
+	file="$HOME/scripts/$1"
+	touch $file 
+	chmod +x $file
+	$EDITOR $file
+}
+newnote(){
+	$EDITOR "$HOME/files/notes/$1"
+}
+notes(){
+	$EDITOR $(ls "$HOME/files/notes" | slmenu)
+}
+
+onsave () { echo "$1" | entr -c -- $& }
+duck () { $BROWSER "https://duckduckgo.com/lite/?q=$&"; }
