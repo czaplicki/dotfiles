@@ -9,6 +9,11 @@ export VISUAL=nvim
 export TERMINAL=st
 export BROWSER=firefox
 
+# keyboard layout
+export XKB_DEFAULT_LAYOUT=se
+export XKB_DEFAULT_VARIANT=us
+export XKB_DEFAULT_OPTIONS='caps:swapescape'
+
 # XDG ( +xdg-Intergration )
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config/"
@@ -19,6 +24,8 @@ export XDG_INTEGRATION_HOME="/src/github.com/czaplicki/xdg-integration"
 # Golang
 export GOPATH="$XDG_DATA_HOME/go"
 
+# Firefox
+export MOZ_ENABLE_WAYLAND=1
 
 # load tty keymap if in tty
 tty | grep -q tty && doas loadkeys ~/.config/keyboard/tty.kmap
