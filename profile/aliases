@@ -22,5 +22,5 @@ alias la="exa -la"
 
 
 # xdg-intergration
-[ -f "$XDG_INTEGRATION_DIR/aliases" ] && . "$XDG_INTEGRATION_DIR/aliases" 
+. "$XDG_INTEGRATION_HOME/aliases" 
 
