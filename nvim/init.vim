@@ -45,6 +45,16 @@ nnoremap X D
 " editor commands
 command Q q!
 command W w!
+command CD !mkdir -p %:h
+"command! -nargs=? W		call s:Write(' w!',	<args>)
+"command! -nargs=? WQ	call s:Write("wq!",	<args>)
+
+"function! s:Write(cmd, ...)
+	"let file = get(a:, 1, expand("%"))
+	"echo "" . file:h
+	"normal! :!mkdir -p file:h 
+	"normal! cmd file
+"endfunction
 
 "let g:airline_statusline_ontop=1
 let g:airline_theme='jellybeans'
