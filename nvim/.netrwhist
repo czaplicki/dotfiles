@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/czaplicki/scripts'
+let g:netrw_dirhist_1='/src/github.com/czaplicki/dotfiles/zsh'
 let g:netrw_dirhist_0='/src/github.com/chemo-project/de'
 let g:netrw_dirhist_9='/src/github.com/czaplicki/waybind/src'
 let g:netrw_dirhist_8='/src/github.com/czaplicki/waybind'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_6='/src/github.com/czaplicki/waybind/src'
 let g:netrw_dirhist_5='/src/github.com/czaplicki/waybind-logger/src'
 let g:netrw_dirhist_4='/src/github.com/czaplicki/dotfiles/waybind'
 let g:netrw_dirhist_3='/src/github.com/czaplicki/dotfiles'
-let g:netrw_dirhist_2='/src/github.com/czaplicki/dotfiles/waybind'
-let g:netrw_dirhist_1='/src/github.com/Cloudef/bemenu/lib'

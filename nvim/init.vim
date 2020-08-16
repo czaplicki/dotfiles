@@ -42,6 +42,9 @@ vnoremap x d
 nnoremap xx dd
 nnoremap X D
 
+" 'd'lete 'c'heracter
+nnoremap dc '_x
+
 " editor commands
 command Q q!
 command W w!
@@ -81,7 +84,8 @@ Plug 'dylanaraps/wal.vim'
 
 " behavier
 Plug 'svermeulen/vim-cutlass'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
-colorscheme wal
+:startinsert
