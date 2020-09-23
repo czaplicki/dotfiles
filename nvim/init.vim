@@ -10,54 +10,60 @@ set autoindent				" try to auto indent
 set gdefault				" use global flag when substituting s/o/r/(g)
 set clipboard+=unnamedplus	" use system cliboard by default (use with cutless)
 
+set modeline
+set modelines=5
+
+" Start in insert mode on new files
+autocmd BufNewFile * startinsert
+
+autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType cabal setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+" syntax
+autocmd BufNewFile,BufRead *sxhkd   set syntax=sxhkd
+
 " highlight traling whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/
 
-" vimwiki settings
-" set leader key
-let g:vimwiki_list = [{'path': '~/files/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-"let mapleader="\<SPACE>"
+let mapleader="\<SPACE>"
 
 " Search and Replace
-nmap \ :%s//g<Left><Left>
+nmap \ :%s//<Left><Left>
 
 " Yea, just one mod button less to press
-nnoremap ; : 
+nnoremap ; :
 " instert newline, staying in normal mode
 nnoremap <CR> i<CR><Esc>
 " same but above current line
 nnoremap <S-CR> O<Esc>
+
 " move line(s) down/up with tab/shift-tab
-nnoremap <Tab> :m .+1<CR>==
-nnoremap <S-Tab> :m .-2<CR>==
-vnoremap <Tab> :m '>+1<CR>gv=gv
-vnoremap <S-Tab> :m '<-2<CR>gv=gv
+nnoremap <silent> <Tab> :m .+1<CR>==
+nnoremap <silent> <S-Tab> :m .-2<CR>==
+vnoremap <silent> <Tab> :m '>+1<CR>gv=gv
+vnoremap <silent> <S-Tab> :m '<-2<CR>gv=gv
 
 " use x as cut, (default delete behavier)
-nnoremap x d
-xnoremap x d
-vnoremap x d
-nnoremap xx dd
-nnoremap X D
+nnoremap <silent> x d
+xnoremap <silent> x d
+vnoremap <silent> x d
+nnoremap <silent> xx dd
+nnoremap <silent> X D
 
-" 'd'lete 'c'heracter
-nnoremap dc '_x
+" void characters when using Delete key
+nnoremap <DS> "_x
+xnoremap <DS> "_x
+vnoremap <DS> "_x
+
 
 " editor commands
 command Q q!
 command W w!
-command CD !mkdir -p %:h
-"command! -nargs=? W		call s:Write(' w!',	<args>)
-"command! -nargs=? WQ	call s:Write("wq!",	<args>)
+command WQ w!q
 
-"function! s:Write(cmd, ...)
-	"let file = get(a:, 1, expand("%"))
-	"echo "" . file:h
-	"normal! :!mkdir -p file:h 
-	"normal! cmd file
-"endfunction
+" vimwiki settings
+let g:vimwiki_list = [{'path': '/src/github.com/czaplicki/czaplicki.github.io/', 'syntax': 'markdown', 'ext': '.md'}]
 
 "let g:airline_statusline_ontop=1
 let g:airline_theme='jellybeans'
@@ -68,14 +74,13 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 call plug#begin(stdpath('data') . '/plugged')
 
-"Web dev
-"Plug 'digitaltoad/vim-pug'
-"Plug 'hail2u/vim-css3-syntax'
-"Plug 'skammer/vim-css-color'
+" syntax
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
-
+Plug 'leafo/moonscript-vim'
+Plug 'kovetskiy/sxhkd-vim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'neovimhaskell/haskell-vim'
 
 " looks
 Plug 'vim-airline/vim-airline'
@@ -85,7 +90,8 @@ Plug 'dylanaraps/wal.vim'
 " behavier
 Plug 'svermeulen/vim-cutlass'
 Plug 'tpope/vim-surround'
+" functionality
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
-
-:startinsert
