@@ -1,0 +1,22 @@
+#! /bin/sh
+
+config="$XDG_CONFIG_HOME"
+
+# Key bindings
+sxhkd &
+
+status-display &
+
+picom -b
+
+dunst &
+
+mons -p eDP-1-1 -o
+setxkbmap se us caps:escape
+xsetroot -cursor_name left_ptr
+
+wallpaper="$config/profile/wallpaper"
+xwallpaper "--$(cat "$wallpaper.mode")" "$wallpaper" &
+
+# Window manager
+exec xmonad
