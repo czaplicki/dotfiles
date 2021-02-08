@@ -1,0 +1,48 @@
+! vim: set syntax=xdefaults :
+
+xnotify.title.font: monospace:size=9:style=bold
+! The fonts to draw the notification title text. More than one font can be specified, separated by comma (,).
+! If more than one font is specified, the first font with a given glyph is used to display that glyph on the screen.
+
+xnotify.body.font: monospace:size=9
+! The fonts to draw the notification body text.
+
+xnotify.background: #0c0e16
+! The color of the notification background.
+
+xnotify.foreground: #eeeeee
+! The color of the notification text.
+
+xnotify.border: #333333
+! The color of the border around a notification.
+
+xnotify.geometry: -20+20
+! The geometry in the form [<WIDTH>x<HEIGHT>][{+-}<XOFFSET>{+-}<YOFFSET>].
+! See the description of the option -g for more information.
+
+xnotify.gravity: NE
+! Where in the screen to display notifications.
+! See the description of the option -G for more information.
+
+xnotify.borderWidth: 1
+! The size in pixels of the border around a notification.
+
+xnotify.gap: 20
+! The gap between notifications.
+
+xnotify.imageWidth: 200
+! The size of the image attached to the notification.
+
+xnotify.leading: 20
+! The space between the title text and the body text.
+
+xnotify.padding: 20
+! The space around the content inside the notification popup window.
+
+xnotify.shrink: false
+! If set to true , the image width will shrink to its content size.
+
+xnotify.alignment:
+! If set to left , center , or right , text is aligned to the left, center, or right of the popup window, respectively.
+! By default, notification text is aligned to the left of the notification popup window.
+

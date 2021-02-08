@@ -1,0 +1,9 @@
+#! /bin/sh
+
+
+
+xresources="$XDG_CONFIG_HOME/xorg/xresources"
+test -f "$xresources" && xrdb "$xresources"
+for FILE in $(find "$xresources.d" -type f | sort) ; do
+    xrdb -merge "$FILE"
+done

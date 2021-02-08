@@ -10,6 +10,7 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.RefocusLast
 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
@@ -21,7 +22,7 @@ import qualified XMonad.StackSet as W
 import Data.List (sortOn,isPrefixOf)
 
 --
-myTerminal      = "st"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -59,9 +60,11 @@ myCommands =
         , ("focus-prev"                , windows W.focusUp                                )
         , ("focus-next"                , windows W.focusDown                              )
         , ("focus-master"              , windows W.focusMaster                            )
+        , ("focus-last"                , toggleFocus                                      )
         , ("swap-with-prev"            , windows W.swapUp                                 )
         , ("swap-with-next"            , windows W.swapDown                               )
         , ("swap-with-master"          , windows W.swapMaster                             )
+        , ("swap-with-last"            , swapWithLast                                     )
         , ("kill-window"               , kill                                             )
         , ("quit"                      , io $ exitWith ExitSuccess                        )
         , ("tile"                      , withFocused $ windows . W.sink                   )
@@ -69,7 +72,11 @@ myCommands =
         ]
 ------------------------------------------------------------------------
 -- Bindings: default actions bound to inputt events
-myKeyboardBindings (XConfig {XMonad.modMask = modm}) = M.fromList []
+
+myKeyboardBindings (XConfig {XMonad.modMask = modm}) = M.fromList
+    [ ((modm .|. shiftMask .|. controlMask, xK_grave ), io $ exitWith ExitSuccess)
+    ]
+
 myMouseBindings    (XConfig {XMonad.modMask = modm}) = M.fromList
 
     -- mod-button1, Set the window to floating mode and move by dragging
@@ -89,14 +96,12 @@ myMouseBindings    (XConfig {XMonad.modMask = modm}) = M.fromList
 ------------------------------------------------------------------------
 -- Layouts:  Master Stack layout and Monolific (fullscreen)
 
-myLayout = (customBorders tiled) ||| noBorders Full
+myLayout = (smartBorders tiled) ||| noBorders Full
   where
     masterCount     = 1
     masterSize      = 0.55
     delta           = 0.05
     tiled           = Tall masterCount delta masterSize
-    borders         = Border 0 0 0 0
-    customBorders   = spacingRaw True (Border 0 0 0 0) False borders True
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -104,9 +109,10 @@ myLayout = (customBorders tiled) ||| noBorders Full
 -- myManageHook = namedScratchpadManageHook myScratchpads
 myManageHook = composeAll
     [ manageDocks
-    , className =? "Xmessage"  --> doCenterFloat
-    -- , className =? "sspt"      --> doFloat
-    , className ^=? "sspt-"      --> doFloatDep (\_-> W.RationalRect (1/6) (1/6) (2/3) (2/3))
+    , className =? "Xmessage"   --> doCenterFloat
+    , className ^=? "eww-"       --> doIgnore
+    , className ^=? "sspt-"     --> doFloatDep (\_-> W.RationalRect (1/6) (1/6) (2/3) (2/3))
+    , className ^=? "ssp-"      --> doFloatDep (\_-> W.RationalRect (1/6) (1/6) (2/3) (2/3))
     ]
 
 (^=?) :: Query String -> String -> Query Bool
@@ -126,7 +132,7 @@ myStartupHook = ewmhDesktopsStartup
 -- Status bars and logging
 
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
-myLogHook = ewmhDesktopsLogHook
+myLogHook = refocusLastLogHook <+> ewmhDesktopsLogHook
 
 -------------------------------------------------------------------------
 -- Custom server mode
@@ -139,8 +145,6 @@ myCommands' = ("list-commands", listMyServerCmds) : myCommands ++ sortOn fst (ws
         sccs = [((m ++ show sc), screenWorkspace (fromIntegral sc) >>= flip whenJust (windows . f))
                | sc <- [0..myMaxScreenCount], (f, m) <- [(W.view, "focus-screen-"), (W.shift, "send-to-screen-")]]
 
-        -- spcs = [("toggle-" ++ sp, namedScratchpadAction myScratchpads sp)
-        --        | sp <- (flip map) (myScratchpads) (\(NS x _ _ _) -> x) ]
 
 listMyServerCmds :: X ()
 listMyServerCmds = spawn ("echo '" ++ asmc ++ "' | xmessage -file -")

@@ -1,0 +1,8 @@
+#! /bin/sh
+
+setxkbmap se us caps:escape
+xsetroot -cursor_name left_ptr
+
+xinput set-prop 15 341 1
+
+

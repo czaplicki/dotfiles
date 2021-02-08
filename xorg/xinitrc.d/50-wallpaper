@@ -1,0 +1,5 @@
+#! /bin/sh
+wallpapers="$(xdg-user-dir PICTURES)/wallpapers"
+wallpaper="$(find "$wallpapers" -type f | shuf -n 1)"
+xwallpaper --zoom "$wallpaper" &
+

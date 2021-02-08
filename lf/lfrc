@@ -30,6 +30,9 @@ set hidden on
 # util
 map ; push  :
 
+# home
+map ~ cd ~
+
 # open shell
 map S shell
 map sh shell
@@ -62,9 +65,13 @@ map Ye		:yank-basename-without-extension
 map a push  :mkfile<space>
 map A push  :mkdir<space>
 
+# backup
+map b		:mkbk
+
 # paste
 map p		:paste
 map P		:softlink
+
 
 # -------------- Commmands -----------------
 
@@ -86,6 +93,14 @@ cmd mkfile ${{
 cmd mkdir ${{
 	mkdir -p "$@"
 		lf -remote "send $id load"$'\n'"send $id select \"$@\""
+}}
+
+cmd mkbk ${{
+    files="$(if [ -n "$fs" ]; then echo "$fs"; else echo "$f" | tr -d '\n'; fi)"
+	for f in $files
+	do
+		cp -r -i "$f" "$f.bk"
+	done
 }}
 
 cmd yank-dirname ${{

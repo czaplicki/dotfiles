@@ -1,22 +1,21 @@
 #! /bin/sh
 
-config="$XDG_CONFIG_HOME"
+export XINIT_LOG="$XDG_CACHE_HOME/xorg/xinit.log"
+mkdir -p "$(dirname "$XINIT_LOG")"
+echo "xinit: " > "$XINIT_LOG"
 
-# Key bindings
-sxhkd &
 
-status-display &
+for script in $(find "$XINITRC.d/" -type f -executable | sort )
+do
+	. "$script" # >"$XINIT_LOG" 2>&1
+done
 
-picom -b
+# mons -p eDP-1-1 -o
+# setxkbmap se us caps:escape
+# xsetroot -cursor_name left_ptr
 
-dunst &
+# xinput set-prop 15 341 1
 
-mons -p eDP-1-1 -o
-setxkbmap se us caps:escape
-xsetroot -cursor_name left_ptr
-
-wallpaper="$config/profile/wallpaper"
-xwallpaper "--$(cat "$wallpaper.mode")" "$wallpaper" &
-
+# run-parts --regex '^.*$' "$XINITRC.d" -v >> "$XINIT_LOG"
 # Window manager
-exec xmonad
+#exec xmonad

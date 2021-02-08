@@ -16,11 +16,13 @@ set modelines=5
 " Start in insert mode on new files
 autocmd BufNewFile * startinsert
 
-autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab nowrap
 autocmd FileType cabal setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " syntax
 autocmd BufNewFile,BufRead *sxhkd   set syntax=sxhkd
+
+autocmd BufNewFile,BufRead */xresourcess.d/*   set syntax=sxhkd
 
 " highlight traling whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -29,7 +31,7 @@ match ExtraWhitespace /\s\+$/
 let mapleader="\<SPACE>"
 
 " Search and Replace
-nmap \ :%s//<Left><Left>
+nmap \ :%s//<Left>
 
 " Yea, just one mod button less to press
 nnoremap ; :
@@ -62,6 +64,18 @@ command Q q!
 command W w!
 command WQ w!q
 
+" unbind arrows in normal & visual mode
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+
+
 " vimwiki settings
 let g:vimwiki_list = [{'path': '/src/github.com/czaplicki/czaplicki.github.io/', 'syntax': 'markdown', 'ext': '.md'}]
 
@@ -81,6 +95,9 @@ Plug 'leafo/moonscript-vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'neovimhaskell/haskell-vim'
+Plug 'dag/vim-fish'
+
+Plug 'vito-c/jq.vim'
 
 " looks
 Plug 'vim-airline/vim-airline'
@@ -90,8 +107,13 @@ Plug 'dylanaraps/wal.vim'
 " behavier
 Plug 'svermeulen/vim-cutlass'
 Plug 'tpope/vim-surround'
+
 " functionality
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
+
+" browser imbedment
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 
 call plug#end()

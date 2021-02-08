@@ -1,0 +1,45 @@
+! screensaver.Dialog.*Font: -monotype-noto sans-medium-r-*--*-*-*-*-*-*-*
+! xtf:mono:pixelsize=14:antialias=true:autohint=true
+
+
+! disable switch user / new user
+! xscreensaver.newLoginCommand:
+
+
+! xscreensaver.Dialog.foreground: #ebdbb2
+! xscreensaver.Dialog.background: #ff00ff
+! xscreensaver.Dialog.Button.foreground: #ebdbb2
+! xscreensaver.Dialog.Button.background: #32302f
+
+!*Dialog.Button.pointBackground: #EAEAEA
+!*Dialog.Button.clickBackground: #C3C3C3
+! xscreensaver.Dialog.text.foreground: #ebdbb2
+! xscreensaver.Dialog.text.background: #32302f
+
+! xscreensaver.passwd.thermometer.foreground: #4464AC
+! xscreensaver.passwd.thermometer.background: #FFFFFF
+
+! xscreensaver.Dialog.shadowThickness: 2
+! xscreensaver.Dialog.topShadowColor: #FFFFFF
+! xscreensaver.Dialog.bottomShadowColor: #CECECE
+
+! xscreensaver.Dialog.logo.width: 0
+! xscreensaver.Dialog.logo.height: 0
+
+! xscreensaver.Dialog.borderWidth: 0
+! xscreensaver.Dialog.internalBorderWidth: 0
+
+! xscreensaver.passwd.heading.label:
+! xscreensaver.passwd.body.label:
+! xscreensaver.passwd.unlock.label:
+! xscreensaver.passwd.login.label:
+! xscreensaver.passwd.user.label:
+! xscreensaver.passwd.thermometer.width: 0
+! xscreensaver.passwd.asterisks: True
+! xscreensaver.passwd.uname: false
+
+! xscreensaver.splash.heading.label: XScreenSaver %s
+! xscreensaver.splash.body.label: Copyright © 1991-2013 by
+! xscreensaver.splash.body2.label: Jamie Zawinski <jwz@jwz.org>
+! xscreensaver.splash.demo.label: Settings
+! xscreensaver.splash.help.label: Help

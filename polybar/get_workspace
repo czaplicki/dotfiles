@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdotool get_desktop

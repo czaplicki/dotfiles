@@ -1,0 +1,26 @@
+; vim: set syntax=dosini :
+
+[colors]
+background = ${xrdb:color0:#222}
+color1 = ${xrdb:color2}
+color2 = ${xrdb:color4}
+color3 = ${xrdb:color6}
+
+[bar/base]
+font-0 = "SFMono Nerd Font Mono,SF Mono:style=Regular"
+font-1 = "NotoSansMono Nerd Font:style=Regular"
+
+[bar/bar1]
+inherit = bar/base
+modules-left= example
+
+[bar/bar1]
+inherit = bar/base
+modules-left= example
+
+[module/example]
+type = custom/text
+content = 
+content-font = 1
+content-padding = 2
+

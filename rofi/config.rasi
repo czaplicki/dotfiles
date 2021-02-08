@@ -3,5 +3,5 @@ configuration {
 	width: 100;
 	lines: 6;
 	font: "mono 12";
-	theme: "/home/czaplicki/.config/rofi/themes/slate.rasi";
+	theme: "/home/apricos/.config/rofi/themes/chemo.rasi";
 }

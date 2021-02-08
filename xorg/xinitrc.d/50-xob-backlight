@@ -1,0 +1,9 @@
+
+XOB_BRIGHTNESS_FIFO="$HOME/.cache/xob-brightness$DISPLAY.fifo"
+export  XOB_BRIGHTNESS_FIFO
+rm -f  $XOB_BRIGHTNESS_FIFO
+mkfifo $XOB_BRIGHTNESS_FIFO
+
+tail $XOB_BRIGHTNESS_FIFO | xob -s brightness -m "$(backlight maximum)" &
+
+

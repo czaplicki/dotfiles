@@ -1,0 +1,8 @@
+#! /bin/sh
+choices="Logout\nPoweroff\nReboot"
+chosen=$(echo -e $choices | rofi -lines 3 -dmenu -i -p "Powermenu")
+case "$chosen" in
+		Logout) xmonadctl quit ;;
+		Poweroff) poweroff ;;
+		Reboot) reboot ;;
+esac

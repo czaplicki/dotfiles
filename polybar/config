@@ -1,0 +1,147 @@
+; vim: set syntax=dosini :
+
+[colors]
+color1		= ${xrdb:color2}
+color2		= ${xrdb:color4}
+color3		= ${xrdb:color6}
+background	= ${xrdb:color0:#222}
+
+[bar/bar]
+font-0		= "SF Mono:size=11:antialias=true;3"
+;font-1		= "FontAwesome5Free:style=Regular:size=9:antialias=true;3"
+;font-2		= "FontAwesome5Free:style=Solid:size=9:antialias=true;3"
+;font-3		= "SFMono Nerd Font Mono,SF Mono:style=Regular"
+font-1		= "NotoSansMono Nerd Font:style=Regular"
+;font-6		= "TerminessTTF Nerd Font Mono:style=Medium"
+
+enable-ipc	= true
+
+background	= ${colors.background}
+height		= 35
+offset-y	= 10
+;radius		= 20
+modules-center	= time
+modules-right	= battery
+offset-x		= 38%
+width			= 24%
+border-size		= 1
+border-color	= #333
+
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+label = "  %percentage:2%%   "
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+base-temperature = 20
+warn-temperature = 80
+
+content-padding = 2
+
+format = "  <ramp> <label> "
+format-warn = "  <ramp> <label-warn> "
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = #f00
+
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = ""
+ramp-3 = ""
+ramp-4 = ""
+ramp-5 = ""
+
+[module/backlight]
+type 			= internal/backlight
+card			= intel_backlight
+format			= "<ramp><label> "
+label			= "%percentage:3%%"
+content-padding = 4
+content-font	= 7
+
+scroll-up = "notify-send up"
+
+ramp-0			= " "
+ramp-1			= " "
+ramp-2			= " "
+ramp-3			= " "
+ramp-4			= " "
+ramp-5			= " "
+ramp-6			= " "
+ramp-7			= " "
+ramp-8			= " "
+ramp-9			= " "
+ramp-10			= " "
+ramp-11			= " "
+ramp-12			= " "
+ramp-13			= " "
+
+[module/battery]
+type			= internal/battery
+; full-at		= 99; in case the battery never reports 100%
+battery			= BAT0
+adapter			= ADP1
+poll-interval	= 30
+
+format-padding = 4
+format-full			= "  <ramp-capacity> <label-full> "
+format-charging		= " <ramp-capacity> <label-charging> "
+format-discharging	= "  <ramp-capacity> <label-discharging> "
+
+label-full			= "%percentage:3:3%%  "
+label-charging		= "%percentage:3:3%%  "
+label-discharging	= "%percentage:3:3%%  "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+[module/power]
+type = custom/text
+content = 
+;content-foreground = ${colors.color3}
+click-left = "$XDG_CONFIG_HOME/polybar/powermenu"
+content-padding = 2
+
+[module/time]
+type = internal/date
+interval = 10
+format-margin = 2
+
+time = "%H:%M"
+date = "%d %b"
+
+label = %date%, %time%
+;label-foreground = ${colors.color3}
+;label-background = ${colors.background}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-padding = 2
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:3:3%%
+;format-volume-background = ${colors.color3}
+;format-volume-foreground = ${colors.background}
+use-ui-max = false
+interval = 5
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+
+
+label-muted = " %percentage:3:3%%"
+label-muted-foreground = #999
+label-muted-padding = 2

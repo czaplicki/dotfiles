@@ -1,0 +1,1 @@
+/home/czaplicki/.local/share/broot/launcher/fish/br.fish
